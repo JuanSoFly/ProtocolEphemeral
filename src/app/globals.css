@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: oklch(0.12 0 286);
+  --color-foreground: oklch(0.98 0 0);
+
+  --color-muted: oklch(0.25 0 286);
+  --color-muted-foreground: oklch(0.7 0 0);
+
+  --color-acc-1: oklch(0.6 0.2 340);
+  --color-acc-2: oklch(0.7 0.15 200);
+
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-fade-out: fade-out 0.3s ease-in forwards;
+  --animate-blur-in: blur-in 0.2s ease-out forwards;
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes blur-in {
+    0% {
+      backdrop-filter: blur(0px);
+    }
+
+    100% {
+      backdrop-filter: blur(12px);
+    }
+  }
+}
+
+/* Anti-Forensic */
+:root {
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+
+input,
+textarea {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}

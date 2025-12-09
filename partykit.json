@@ -1,0 +1,5 @@
+{
+  "name": "protocol-ephemeral",
+  "main": "src/party/server.ts",
+  "compatibilityDate": "2025-12-09"
+}
