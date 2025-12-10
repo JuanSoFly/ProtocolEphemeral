@@ -13,7 +13,8 @@ import { generateKey, exportKey, importKey, encryptMessage, decryptMessage } fro
 
 interface Message {
   id: string;
-  text: string;
+  content: string;
+  type: 'text' | 'image';
   sender: string;
   timestamp: number;
 }
@@ -100,12 +101,27 @@ export default function Home() {
         // Decrypt
         const packet = data as Packet;
 
-        const decryptedText = await decryptMessage(packet.iv, packet.ciphertext, cryptoKey);
+        const decryptedPayload = await decryptMessage(packet.iv, packet.ciphertext, cryptoKey);
 
-        if (decryptedText !== "[Decryption Error]") {
+        if (decryptedPayload !== "[Decryption Error]") {
+          let content = decryptedPayload;
+          let type: 'text' | 'image' = 'text';
+
+          try {
+            // Try to parse as JSON structure { type, content }
+            const parsed = JSON.parse(decryptedPayload);
+            if (parsed.type && (parsed.type === 'text' || parsed.type === 'image')) {
+              content = parsed.content;
+              type = parsed.type;
+            }
+          } catch (e) {
+            // Not JSON, treat as legacy text message
+          }
+
           const newMessage: Message = {
             id: Math.random().toString(36),
-            text: decryptedText,
+            content,
+            type,
             sender: packet.sender,
             timestamp: Date.now(),
           };
@@ -125,11 +141,12 @@ export default function Home() {
   }, []); // Run once on mount
 
   // 2. Send
-  const handleSendMessage = async (text: string) => {
+  const handleSendMessage = async (content: string, type: 'text' | 'image') => {
     if (!socketRef.current || !key) return;
 
     try {
-      const { iv, ciphertext } = await encryptMessage(text, key);
+      const payload = JSON.stringify({ type, content });
+      const { iv, ciphertext } = await encryptMessage(payload, key);
       const packet: Packet = {
         iv,
         ciphertext,
@@ -140,10 +157,10 @@ export default function Home() {
       socketRef.current.send(JSON.stringify(packet));
 
 
-
       const newMessage: Message = {
         id: Math.random().toString(36),
-        text: text,
+        content,
+        type,
         sender: identity,
         timestamp: Date.now(),
       };
@@ -235,7 +252,8 @@ export default function Home() {
             <EphemeralMessage
               key={msg.id}
               id={msg.id}
-              text={msg.text}
+              content={msg.content}
+              type={msg.type}
               sender={msg.sender}
               timestamp={msg.timestamp}
               isMe={msg.sender === identity}
