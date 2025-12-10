@@ -15,6 +15,7 @@
 - **Client-Side E2EE**: Keys are generated in-browser and live in the URL fragment (`#`). They never touch the server.
 - **Hostile Capture UI**: The interface actively fights surveillance. It blurs on focus loss and blocks screenshot attempts.
 - **Ephemeral By Default**: Messages fade after 5 minutes. Reloading the page shreds all history.
+- **Stealth Images**: Images are compressed, encrypted, and sent ephemerally. They vanish just like text.
 
 ## 🛠️ Tech Stack
 
