@@ -5,7 +5,8 @@ import { cn, generateGradient } from "@/lib/utils";
 
 interface EphemeralMessageProps {
     id: string;
-    text: string;
+    content: string;
+    type?: 'text' | 'image';
     sender: string;
     isMe: boolean;
     timestamp: number;
@@ -17,7 +18,8 @@ const FADE_DURATION = 1000; // 1s start fading before expiry
 
 export function EphemeralMessage({
     id,
-    text,
+    content,
+    type = 'text',
     sender,
     isMe,
     timestamp,
@@ -74,13 +76,18 @@ export function EphemeralMessage({
 
                 <div
                     className={cn(
-                        "w-fit rounded-2xl px-4 py-2 text-sm shadow-md backdrop-blur-sm",
+                        "w-fit rounded-2xl p-2 shadow-md backdrop-blur-sm overflow-hidden",
                         isMe
                             ? "bg-stone-100/10 text-stone-100 rounded-tr-sm"
-                            : "bg-black/40 text-stone-200 rounded-tl-sm border border-stone-800"
+                            : "bg-black/40 text-stone-200 rounded-tl-sm border border-stone-800",
+                        type === 'text' && "px-4"
                     )}
                 >
-                    <div className="break-words leading-relaxed">{text}</div>
+                    {type === 'image' ? (
+                        <img src={content} alt="Ephemeral" className="max-w-full rounded-lg max-h-64 object-cover" />
+                    ) : (
+                        <div className="break-words leading-relaxed">{content}</div>
+                    )}
 
                     <div className="mt-1 h-0.5 w-full bg-white/5 rounded-full overflow-hidden">
                         <div
