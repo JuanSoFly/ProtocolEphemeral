@@ -1,4 +1,4 @@
-# Protocol Ephemeral 🕵️
+# Protocol Ephemeral <O>
 
 > **Zero-Retention. Anonymous. Anti-Forensic.**
 > A messaging channel that exists only in RAM and dissolves upon closure.
@@ -7,7 +7,7 @@
 ![Security](https://img.shields.io/badge/encryption-AES--GCM-green)
 ![Privacy](https://img.shields.io/badge/storage-RAM--only-orange)
 
-## 🚨 Core Philosophy
+## [!] Core Philosophy
 
 **Protocol Ephemeral** is built on a single premise: **Trust No Disk.**
 
@@ -17,14 +17,14 @@
 - **Ephemeral By Default**: Messages fade after 5 minutes. Reloading the page shreds all history.
 - **Stealth Images**: Images are compressed, encrypted, and sent ephemerally. They vanish just like text.
 
-## 🛠️ Tech Stack
+## [+] Tech Stack
 
 - **Frontend**: Next.js 16 (App Router), React 19, Tailwind CSS 4
 - **Realtime Relay**: PartyKit (Cloudflare Durable Objects)
 - **Cryptography**: Web Crypto API (AES-GCM 256-bit)
 - **UI/UX**: `lucide-react`, `sonner`, custom "Privacy Shield" components
 
-## 🚀 Getting Started
+## >> Getting Started
 
 You need two terminals to run the full stack locally.
 
@@ -59,7 +59,7 @@ pnpm dev
 
 If you deploy the web app separately from PartyKit, set `NEXT_PUBLIC_PARTYKIT_HOST` to your PartyKit host.
 
-## 🛡️ Security Features
+## [#] Security Features
 
 ### "Blind" Relay
 The PartyKit server receives opaque ciphertext and does not decrypt or inspect it. It simply forwards it to other connected clients.
@@ -72,7 +72,7 @@ The application listens for `blur` and `visibilitychange` events. If you switch 
 - Context menus are disabled to strictly limit browser interaction.
 - Screenshot key combinations (PrintScreen, Cmd+Shift+3/4/S, etc.) attempt to trigger a clipboard clear and screen blur.
 
-## ⚠️ Disclaimer
+## !! Disclaimer
 
 **DO NOT TRUST THIS CHANNEL FOR WHISTLEBLOWING.**
 While we implement strict E2EE and zero-persistence, the browser environment is ultimately hostile. A compromised device, malicious browser extension, or physical surveillance can bypass these protections. Use at your own risk.
