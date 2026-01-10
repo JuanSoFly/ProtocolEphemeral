@@ -7,6 +7,8 @@
 ![Security](https://img.shields.io/badge/encryption-AES--GCM-green)
 ![Privacy](https://img.shields.io/badge/storage-RAM--only-orange)
 
+![Protocol Ephemeral](public/protocol-view.png)
+
 ## [!] Core Philosophy
 
 **Protocol Ephemeral** is built on a single premise: **Trust No Disk.**
