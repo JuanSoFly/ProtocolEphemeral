@@ -65,7 +65,7 @@ export function ImagePreview({ src, onClose }: ImagePreviewProps) {
             </button>
 
             <div
-                className="relative max-h-[90vh] max-w-[90vw]"
+                className="relative max-h-[90vh] max-w-[90vw] overflow-hidden rounded-lg"
                 onMouseDown={handleMouseDown}
                 onMouseUp={handleMouseUp}
                 onMouseLeave={handleMouseUp}
@@ -87,7 +87,7 @@ export function ImagePreview({ src, onClose }: ImagePreviewProps) {
                     src={src}
                     alt="Preview"
                     className={cn(
-                        "max-h-[90vh] max-w-[90vw] rounded-lg object-contain shadow-2xl transition-all duration-0",
+                        "max-h-[90vh] max-w-[90vw] rounded-lg object-contain transition-all duration-0",
                         isVisible ? "" : "blur-3xl scale-95"
                     )}
                     draggable="false"
