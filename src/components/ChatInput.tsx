@@ -76,7 +76,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
         >
             {imagePreview && (
                 <div className="relative mx-2 mt-2 w-fit">
-                    <img src={imagePreview} alt="Preview" className="h-32 rounded-lg border border-white/10 object-cover" />
+                    <img src={imagePreview} alt="Preview" className="h-32 rounded-lg border border-white/10 object-cover" draggable="false" />
                     <button
                         type="button"
                         onClick={() => setImagePreview(null)}
