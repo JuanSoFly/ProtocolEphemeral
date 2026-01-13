@@ -8,6 +8,7 @@ import { Lock, Share2, AlertTriangle, Terminal } from "lucide-react";
 import { ChatInput } from "@/components/ChatInput";
 import { EphemeralMessage } from "@/components/EphemeralMessage";
 import { StatusIndicator } from "@/components/StatusIndicator";
+import { ThemeChanger } from "@/components/ThemeChanger";
 import { generateIdentity } from "@/lib/utils";
 import { generateKey, exportKey, importKey, encryptMessage, decryptMessage } from "@/lib/crypto";
 
@@ -212,6 +213,7 @@ export default function Home() {
 
         <div className="flex items-center gap-3">
           <StatusIndicator status={status} peerCount={peerCount} />
+          <ThemeChanger />
           <button
             onClick={copyLink}
             className="flex items-center gap-2 rounded-full bg-white/5 px-3 py-1.5 text-xs font-medium transition-colors hover:bg-white/10"
