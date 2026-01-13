@@ -199,15 +199,15 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex h-screen w-full flex-col bg-stone-950 text-stone-200 selection:bg-acc-1 selection:text-white">
+    <main className="flex h-screen w-full flex-col bg-background text-foreground selection:bg-acc-1 selection:text-white">
       <Toaster theme="dark" position="top-center" />
 
 
-      <header className="flex h-14 shrink-0 items-center justify-between border-b border-white/5 bg-stone-950/80 px-4 backdrop-blur-md z-10">
+      <header className="flex h-14 shrink-0 items-center justify-between border-b border-white/5 bg-background/80 px-4 backdrop-blur-md z-10">
         <div className="flex items-center gap-2">
-          <Lock className="text-emerald-500" size={16} />
-          <span className="font-mono text-sm font-bold tracking-tight text-stone-400">
-            PROTOCOL <span className="text-stone-100">EPHEMERAL</span>
+          <Lock className="text-acc-1" size={16} />
+          <span className="font-mono text-sm font-bold tracking-tight text-muted-foreground">
+            PROTOCOL <span className="text-foreground">EPHEMERAL</span>
           </span>
         </div>
 
@@ -233,8 +233,8 @@ export default function Home() {
         <div className="mx-auto flex max-w-2xl flex-col gap-6">
 
           {showIntro && (
-            <div className="mb-8 rounded-lg border border-blue-900/30 bg-blue-950/10 p-4 text-xs text-blue-200 animate-fade-in">
-              <div className="flex items-center gap-2 font-bold text-blue-300 mb-1">
+            <div className="mb-8 rounded-lg border border-acc-2/30 bg-acc-2/10 p-4 text-xs text-foreground/80 animate-fade-in">
+              <div className="flex items-center gap-2 font-bold text-acc-1 mb-1">
                 <span className="text-lg">➤</span>
                 Welcome to Protocol Ephemeral
               </div>
@@ -274,7 +274,7 @@ export default function Home() {
             onSendMessage={handleSendMessage}
             disabled={status !== "connected"}
           />
-          <div className="mt-2 text-center text-[10px] text-stone-600 font-mono">
+          <div className="mt-2 text-center text-[10px] text-muted-foreground font-mono">
             ID: {identity} • IV: FRESH PER MESSAGE • STORAGE: NULL
           </div>
         </div>

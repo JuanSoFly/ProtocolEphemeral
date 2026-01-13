@@ -70,7 +70,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
         <form
             onSubmit={handleSubmit}
             className={cn(
-                "relative flex flex-col gap-2 rounded-2xl bg-stone-900/50 p-2 backdrop-blur-md border border-white/5 transition-all focus-within:border-white/20",
+                "relative flex flex-col gap-2 rounded-2xl bg-muted/50 p-2 backdrop-blur-md border border-white/5 transition-all focus-within:border-white/20",
                 disabled && "opacity-50 cursor-not-allowed"
             )}
         >
@@ -80,7 +80,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
                     <button
                         type="button"
                         onClick={() => setImagePreview(null)}
-                        className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-stone-800 text-stone-400 hover:bg-stone-700 hover:text-white"
+                        className="absolute -right-2 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
                     >
                         <X size={14} />
                     </button>
@@ -93,7 +93,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
                     onClick={() => fileInputRef.current?.click()}
                     disabled={disabled || !!imagePreview}
                     className={cn(
-                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all hover:bg-white/5 text-stone-400 hover:text-stone-200",
+                        "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all hover:bg-white/5 text-muted-foreground hover:text-foreground",
                         (disabled || !!imagePreview) && "opacity-50 cursor-not-allowed"
                     )}
                 >
@@ -115,7 +115,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
                     placeholder={imagePreview ? "Image attached" : "Type a message..."}
-                    className="max-h-32 min-h-[44px] w-full resize-none bg-transparent px-2 py-3 text-sm text-stone-200 placeholder:text-stone-500 focus:outline-none"
+                    className="max-h-32 min-h-[44px] w-full resize-none bg-transparent px-2 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none"
                     style={{ scrollbarWidth: 'none' }}
                 />
 
@@ -125,8 +125,8 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
                     className={cn(
                         "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-all",
                         (value.trim() || imagePreview) && !disabled
-                            ? "bg-white text-black hover:bg-stone-200 hover:scale-105 active:scale-95"
-                            : "bg-white/5 text-stone-600 cursor-not-allowed"
+                            ? "bg-acc-1 text-white hover:brightness-110 hover:scale-105 active:scale-95"
+                            : "bg-white/5 text-muted-foreground cursor-not-allowed"
                     )}
                 >
                     <SendHorizontal size={18} />
@@ -136,7 +136,7 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
             {/* Character count */}
             {!imagePreview && (
                 <div className={cn(
-                    "absolute -top-6 right-2 text-[10px] text-stone-500 transition-opacity",
+                    "absolute -top-6 right-2 text-[10px] text-muted-foreground transition-opacity",
                     value.length > 0 ? "opacity-100" : "opacity-0"
                 )}>
                     {value.length}/{MAX_CHARS}

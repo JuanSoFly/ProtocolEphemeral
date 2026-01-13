@@ -69,7 +69,7 @@ export function EphemeralMessage({
 
             <div className={cn("flex flex-col gap-1 max-w-[70%]", isMe && "items-end")}>
                 {!isMe && (
-                    <span className="ml-1 text-[10px] font-bold text-stone-500 uppercase tracking-wider">
+                    <span className="ml-1 text-[10px] font-bold text-muted-foreground uppercase tracking-wider">
                         {sender}
                     </span>
                 )}
@@ -78,8 +78,8 @@ export function EphemeralMessage({
                     className={cn(
                         "w-fit rounded-2xl p-2 shadow-md backdrop-blur-sm overflow-hidden",
                         isMe
-                            ? "bg-stone-100/10 text-stone-100 rounded-tr-sm"
-                            : "bg-black/40 text-stone-200 rounded-tl-sm border border-stone-800",
+                            ? "bg-acc-1/20 text-foreground rounded-tr-sm"
+                            : "bg-muted/60 text-foreground rounded-tl-sm border border-white/10",
                         type === 'text' && "px-4"
                     )}
                 >

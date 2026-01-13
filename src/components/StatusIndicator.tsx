@@ -9,7 +9,7 @@ interface StatusIndicatorProps {
 
 export function StatusIndicator({ status, peerCount }: StatusIndicatorProps) {
     return (
-        <div className="flex items-center gap-2 rounded-full border border-white/5 bg-black/20 px-3 py-1 text-xs font-medium text-stone-400 backdrop-blur-md">
+        <div className="flex items-center gap-2 rounded-full border border-white/5 bg-background/40 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur-md">
             <div
                 className={cn(
                     "h-2 w-2 rounded-full",
